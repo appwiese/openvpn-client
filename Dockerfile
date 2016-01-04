@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER David Personette <dperson@dperson.com>
+MAINTAINER Luis Herrada <luisehk@gmail.com>
 
 # Install openvpn
 RUN export DEBIAN_FRONTEND='noninteractive' && \
@@ -9,8 +9,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* && \
     addgroup --system vpn
-COPY openvpn.sh /usr/bin/
 
 VOLUME ["/vpn"]
 
-ENTRYPOINT ["openvpn.sh"]
+ENTRYPOINT ["openvpn", "--config", "/vpn/vpn.conf"]
