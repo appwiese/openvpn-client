@@ -12,7 +12,7 @@ capable of traversing network address translators (NATs) and firewalls.
 
 ### VPN configuration
 
-Just place your .ovpn as /vpn/vpn.conf in your volume and then run:
+To make your HOST connect to your vpn, just place your .ovpn as /vpn/vpn.conf in your volume and then run:
 
-    sudo docker run --cap-add=NET_ADMIN --device /dev/net/tun --name vpn \
+    sudo docker run --net="host"--cap-add=NET_ADMIN --device /dev/net/tun --name vpn \
                 -v /some/path:/vpn -d luisehk/openvpn-client 
